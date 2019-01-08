@@ -1,0 +1,15 @@
+{
+  "name": "tdd-talk",
+  "version": "1.0.0",
+  "main": "index.mdx",
+  "author": "Gabriel Aumala",
+  "license": "MIT",
+  "dependencies": {
+    "@mdx-js/tag": "^0.16.6",
+    "react": "^16.7.0"
+  },
+  "scripts": {
+    "build": "mdx-deck build index.mdx",
+    "start": "mdx-deck index.mdx"
+  }
+}
