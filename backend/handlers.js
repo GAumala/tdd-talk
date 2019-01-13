@@ -3,7 +3,7 @@ const insertUser = async body => {
   if (!email || !name)
     return { status: 400, body: 'formulario incompleto' };
 
-  return { status: 500, body: 'Not Implemented Yet' }
+  return { status: 200, body: 'OK' }
 }
 
 const findUser = async params => {
