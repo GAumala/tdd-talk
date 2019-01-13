@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Form from './Form.js';
 import Loading from './Loading.js';
-import logo from './logo.svg';
 import './App.css';
 
 const updateInput = (key, value) => prevState => {
@@ -21,7 +20,13 @@ const submitForm = uploadFn => prevState => {
       errorMsg: 'E-mail es requerido.' 
     }
 
-  return { ...prevState };
+
+  if (!prevState.submitting)
+    uploadFn({ 
+      name: prevState.name, 
+      email: prevState.email 
+    });
+  return { ...prevState, submitting: true };
 }
 
 class App extends Component {
@@ -43,11 +48,14 @@ class App extends Component {
       submitting
     } = this.state;
 
+    if (submitting)
+      return <Loading />
+
     return (
         <Form 
-          name={this.state.name}
-          email={this.state.email}
-          errorMsg={this.state.errorMsg}
+          name={name}
+          email={email}
+          errorMsg={errorMsg}
           onInputChanged={this.handleInputChange}
           onSubmit={this.handleFormSubmit}/>)
   }
