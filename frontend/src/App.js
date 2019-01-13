@@ -9,6 +9,18 @@ const updateInput = (key, value) => prevState => {
 }
 
 const submitForm = uploadFn => prevState => {
+  if (!prevState.name)
+    return { ...prevState, 
+      submitting: false, 
+      errorMsg: 'Nombre es requerido.' 
+    }
+
+  if (!prevState.email)
+    return { ...prevState, 
+      submitting: false,
+      errorMsg: 'E-mail es requerido.' 
+    }
+
   return { ...prevState };
 }
 
