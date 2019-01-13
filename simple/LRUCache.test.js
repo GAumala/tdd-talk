@@ -21,7 +21,7 @@ describe('LRUCache', () => {
     expect(cache.get(0)).toBeUndefined();
   })
 
-  describe.only('with weights', () => {
+  describe('with weights', () => {
     it('takes weight into account for evictions', () => {
       const cache = new LRUCache(10);
       cache.put('first', 1, 5);

@@ -6,7 +6,7 @@ class LRUCache {
     this.liveKeys = []
   }
 
-  put(key, value, weight) {
+  put(key, value, weight = 1) {
     this.map[key] = value;
     this.currentSize += weight
 
