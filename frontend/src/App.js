@@ -9,7 +9,7 @@ const updateInput = (key, value) => prevState => {
 }
 
 const submitForm = uploadFn => prevState => {
-  return prevState;
+  return { ...prevState };
 }
 
 class App extends Component {
@@ -24,17 +24,20 @@ class App extends Component {
   }
 
   render() {
+    const {
+      name,
+      email,
+      errorMsg,
+      submitting
+    } = this.state;
+
     return (
-      <div className="App">
         <Form 
           name={this.state.name}
           email={this.state.email}
           errorMsg={this.state.errorMsg}
           onInputChanged={this.handleInputChange}
-          onSubmit={this.handleFormSubmit}/>
-        <Loading />
-      </div>
-    );
+          onSubmit={this.handleFormSubmit}/>)
   }
 
   handleInputChange = (key, value) => {
