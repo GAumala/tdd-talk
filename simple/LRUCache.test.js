@@ -8,6 +8,7 @@ describe('LRUCache', () => {
     
     expect(retrieved).toEqual(1);
   })
+
   it('discards older entries', () => {
     const cache = new LRUCache(10);
     cache.put('first', 1);
@@ -18,5 +19,18 @@ describe('LRUCache', () => {
 
     expect(cache.get(10)).toBe(0);
     expect(cache.get(0)).toBeUndefined();
+  })
+
+  describe.only('with weights', () => {
+    it('takes weight into account for evictions', () => {
+      const cache = new LRUCache(10);
+      cache.put('first', 1, 5);
+      cache.put('second', 2, 3);
+      cache.put('third', 3, 6);
+
+      expect(cache.get('first')).toBeUndefined();
+      expect(cache.get('second')).toBe(2);
+      expect(cache.get('third')).toBe(3);
+    })
   })
 })
