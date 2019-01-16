@@ -5,7 +5,9 @@ const insertUser = async body => {
   if (!email || !name)
     return { status: 400, body: 'formulario incompleto' };
 
-  return { status: 200, body: 'OK' }
+  await db.insertUser({ email, name });
+
+  return { status: 200, body: 'OK' };
 }
 
 const findUser = async params => {
@@ -16,8 +18,7 @@ const findUser = async params => {
   if (!foundUser) 
     return { status: 404, body: 'Not Found' };
 
-
-return { status: 500, body: 'Not Implemented Yet' }
+  return { status: 200, body: foundUser };
 }
 
 module.exports = {

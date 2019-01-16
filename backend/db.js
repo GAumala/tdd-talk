@@ -8,7 +8,7 @@ const knex = require('knex')({
 const insertUser = user => knex('users').insert(user);
 
 const findUser = email => 
-  knex.select('*')
+  knex.select(['name', 'email'])
     .from('users')
     .where({ email })
     .limit(1);

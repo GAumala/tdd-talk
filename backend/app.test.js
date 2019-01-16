@@ -33,6 +33,7 @@ describe('GET /user', () => {
       email: 'gabriel@criptext.com'
     })
 
+
     // ahora pedir el mismo user
     const res = await client.findUser('gabriel@criptext.com');
     expect(res.status).toBe(200);
